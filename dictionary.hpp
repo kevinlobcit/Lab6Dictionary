@@ -12,12 +12,17 @@
 
 class dictionary {
 private:
-    std::map<std::string, std::string> dictionary;
+    std::map<std::string, std::string> dMap;
     std::map<std::string, std::string>::iterator dIterator;
+    std::string loc;
 
 
 
 public:
+    dictionary(std::string);
+    ~dictionary();
+
+    void menu();
     void printDict();
     void findDef();
     void newWord();

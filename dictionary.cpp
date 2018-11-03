@@ -4,39 +4,67 @@
 
 #include "dictionary.hpp"
 
+dictionary::dictionary(std::string location){
+    loc = location;
+}
+
+dictionary::~dictionary(){
+
+}
+
+void dictionary::menu() {
+    int option = -1;
+    while(option != 4)
+    {
+        std::cout << "1 - Print dictionary\n" <<
+                     "2 - Find word definition\n" <<
+                     "3 - Enter new word and definition\n" <<
+                     "4 - Exit" << std::endl;
+        std::cin >> option;
+        switch(option){
+            case 1: printDict();
+                break;
+            case 2: findDef();
+                break;
+            case 3: newWord();
+                break;
+            case 4: option = 4;
+        }
+
+    }
+}
+
 void dictionary::printDict() {
-
-
     bool newWord = true;
     std::string word = "";
     std::string def = "";
 
     std::string readIn = "";
-    std::ifstream fDict;
-    fDict.open("../dictionary.txt");
+    std::ifstream fDict(loc);
     if(fDict.is_open())
     {
         while(getline(fDict, readIn))
         {
-            std::cout << readIn << '\n';
+            //std::cout << readIn << '\n';
             if(newWord)
             {
-                word = readIn;
+                word = readIn + '\n';
                 newWord = false;
             }
             else
             {
-                def = readIn;
-                //dictionary.insert(def, word);
+                def = readIn + '\n';
+                dMap.insert(make_pair(word, def));
+                //std::cout << word << "||" << def << std::endl;
                 newWord = true;
             }
         }
 
         fDict.close();
 
-        for(dIterator = dictionary.begin(); dIterator != dictionary.end(); dIterator++)
+        for(dIterator = dMap.begin(); dIterator != dMap.end(); dIterator++)
         {
-            //std::cout<< dIterator->first << " - " << dIterator->second << std::endl;
+            std::cout<< dIterator->first << " - " << dIterator->second << std::endl;
         }
     }
     else
@@ -47,11 +75,11 @@ void dictionary::printDict() {
 }
 
 void dictionary::findDef() {
-
+    
 }
 
 void dictionary::newWord() {
-
+    std::cout << "Enter the new word: ";
 }
 
 void dictionary::exit() {

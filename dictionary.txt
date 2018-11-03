@@ -1,5 +1,4 @@
-Eat
-To consume food
-
-Apple
-A red fruit which floats on water
+eat
+to consume food
+apple
+a red fruit which floats on water

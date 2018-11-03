@@ -3,4 +3,4 @@ project(Lab6Dictionary)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(Lab6Dictionary main.cpp)
+add_executable(Lab6Dictionary main.cpp dictionary.cpp dictionary.hpp)
